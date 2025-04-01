@@ -20,7 +20,7 @@ A high-performance file transfer service built with Go and gRPC, supporting effi
 
 1. Clone the repository
 
-    git clone https://github.com/yourusername/file-transfer.git
+    git clone https://github.com/tinyboyms/File_transfer_service.git
 
 2. Install dependencies
 ```bash
