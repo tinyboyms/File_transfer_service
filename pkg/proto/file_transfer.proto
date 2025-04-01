@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package filetransfer;
+
+option go_package = "github.com/yourusername/file_transfer/pkg/proto";
+
+service FileTransferService {
+  // Upload a file from client to server
+  rpc UploadFile(stream FileChunk) returns (FileResponse);
+  
+  // Download a file from server to client
+  rpc DownloadFile(FileRequest) returns (stream FileChunk);
+  
+  // Get information about a file
+  rpc GetFileInfo(FileRequest) returns (FileInfo);
+}
+
+message FileChunk {
+  string filename = 1;
+  bytes content = 2;
+  int64 total_size = 3;
+  int64 chunk_size = 4;
+  int64 offset = 5;
+}
+
+message FileRequest {
+  string filename = 1;
+}
+
+message FileResponse {
+  string message = 1;
+  bool success = 2;
+  int64 size = 3;
+}
+
+message FileInfo {
+  string filename = 1;
+  int64 size = 2;
+  bool exists = 3;
+}
